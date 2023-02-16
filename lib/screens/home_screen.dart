@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HomeScreeen extends StatelessWidget {
-  const HomeScreeen({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   final TextStyle estiloTexto = const TextStyle(
     fontSize: 30,
@@ -17,7 +17,7 @@ class HomeScreeen extends StatelessWidget {
         title: const Text('Air Quality'),
         centerTitle: true,
         elevation: 10,
-        backgroundColor: Color.fromARGB(255, 91, 108, 194),
+        backgroundColor: const Color.fromARGB(255, 91, 108, 194),
       ),
       body: Center(
         child: Column(
@@ -35,11 +35,10 @@ class HomeScreeen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           contador++;
-          print('Tocaste el boton: $contador');
-          //
+          print('Tocaste el botón: $contador');
         },
-        backgroundColor: Color.fromARGB(255, 195, 228, 222),
-        foregroundColor: Color.fromARGB(255, 95, 25, 65),
+        backgroundColor: const Color.fromARGB(255, 161, 255, 238),
+        foregroundColor: const Color.fromARGB(255, 15, 25, 75),
         child: const Icon(Icons.add),
       ),
     );
