@@ -81,7 +81,7 @@ class CustomFloatingActionButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         FloatingActionButton(
-          onPressed: () => decrease(), //usar funciones aque no tienen nombre
+          onPressed: () => decrease(), //usar funciones que no tienen nombre
           backgroundColor: const Color.fromARGB(255, 15, 25, 75),
           foregroundColor: const Color.fromARGB(255, 255, 255, 255),
           child: const Icon(Icons.exposure_minus_1),
