@@ -24,6 +24,13 @@ class _MultiplierScreenState extends State<MultiplierScreen> {
     setState(() {});
   }
 
+  void reiniciar() {
+    resultado = 0;
+    s = 0;
+    p = 0;
+    setState(() {});
+  }
+
   void incrementars() {
     s++;
     setState(() {});
@@ -63,6 +70,8 @@ class _MultiplierScreenState extends State<MultiplierScreen> {
     );
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 0, 7, 40),
+        centerTitle: true,
         title: const Text('Multiplicador Básico'),
         elevation: 10,
       ),
@@ -72,35 +81,96 @@ class _MultiplierScreenState extends State<MultiplierScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               const Text(
-                'Multiplicación ',
+                'Multiplicación s',
                 style: estiloTexto,
               ),
               Text(
                 '$s x $p = $resultado',
                 style: estiloTexto,
               ),
+              FloatingActionButton(
+                backgroundColor: const Color.fromARGB(255, 0, 7, 40),
+                foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+                onPressed: () => decrementars(),
+                child: const Icon(Icons.exposure_minus_1),
+              ),
+              FloatingActionButton(
+                backgroundColor: const Color.fromARGB(255, 0, 7, 40),
+                foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+                onPressed: () => reiniciars(),
+                child: const Icon(Icons.restart_alt),
+              ),
+              FloatingActionButton(
+                backgroundColor: const Color.fromARGB(255, 0, 7, 40),
+                foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+                onPressed: () => incrementarp(),
+                child: const Icon(Icons.exposure_plus_1),
+              ),
+            ],
+          ),
+          const Row(
+            children: [
+              Text('     '),
             ],
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               const Text(
-                'Multiplicación ',
+                'Multiplicación p',
                 style: estiloTexto,
               ),
               Text(
                 '$s x $p = $resultado',
                 style: estiloTexto,
               ),
+              FloatingActionButton(
+                backgroundColor: const Color.fromARGB(255, 0, 7, 40),
+                foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+                onPressed: () => decrementarp(),
+                child: const Icon(Icons.exposure_minus_1),
+              ),
+              FloatingActionButton(
+                backgroundColor: const Color.fromARGB(255, 0, 7, 40),
+                foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+                onPressed: () => reiniciarp(),
+                child: const Icon(Icons.restart_alt),
+              ),
+              FloatingActionButton(
+                backgroundColor: const Color.fromARGB(255, 0, 7, 40),
+                foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+                onPressed: () => incrementars(),
+                child: const Icon(Icons.exposure_plus_1),
+              ),
+            ],
+          ),
+          const Row(
+            children: [
+              Text('     '),
             ],
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
-                'El resultado es: $resultado',
+                'El resultado es $resultado',
                 style: estiloTexto,
-              )
+              ),
+              FloatingActionButton(
+                backgroundColor: const Color.fromARGB(255, 0, 7, 40),
+                foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+                onPressed: () => multiplicar(),
+                child: const Icon(Icons.close),
+              ),
+              FloatingActionButton(
+                backgroundColor: const Color.fromARGB(255, 0, 7, 40),
+                foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+                onPressed: () => reiniciar(),
+                child: const Icon(Icons.restart_alt),
+              ),
             ],
           )
         ],
@@ -108,6 +178,7 @@ class _MultiplierScreenState extends State<MultiplierScreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: CustomFloatingActionButton(
         multiplicar: multiplicar,
+        reiniciar: reiniciar,
         decrementars: decrementars,
         incrementars: incrementars,
         reiniciars: reiniciars,
@@ -121,6 +192,7 @@ class _MultiplierScreenState extends State<MultiplierScreen> {
 
 class CustomFloatingActionButton extends StatelessWidget {
   final Function multiplicar;
+  final Function reiniciar;
   final Function decrementars;
   final Function incrementars;
   final Function reiniciars;
@@ -131,6 +203,7 @@ class CustomFloatingActionButton extends StatelessWidget {
   const CustomFloatingActionButton(
       {Key? key,
       required this.multiplicar,
+      required this.reiniciar,
       required this.decrementars,
       required this.incrementars,
       required this.reiniciars,
@@ -147,44 +220,8 @@ class CustomFloatingActionButton extends StatelessWidget {
         FloatingActionButton(
           backgroundColor: const Color.fromARGB(255, 0, 7, 40),
           foregroundColor: const Color.fromARGB(255, 255, 255, 255),
-          onPressed: () => multiplicar(),
-          child: const Icon(Icons.close),
-        ),
-        FloatingActionButton(
-          backgroundColor: const Color.fromARGB(255, 0, 7, 40),
-          foregroundColor: const Color.fromARGB(255, 255, 255, 255),
-          onPressed: () => decrementars(),
-          child: const Icon(Icons.exposure_minus_1),
-        ),
-        FloatingActionButton(
-          backgroundColor: const Color.fromARGB(255, 0, 7, 40),
-          foregroundColor: const Color.fromARGB(255, 255, 255, 255),
-          onPressed: () => decrementarap(),
-          child: const Icon(Icons.exposure_minus_1),
-        ),
-        FloatingActionButton(
-          backgroundColor: const Color.fromARGB(255, 0, 7, 40),
-          foregroundColor: const Color.fromARGB(255, 255, 255, 255),
-          onPressed: () => reiniciars(),
+          onPressed: () => reiniciar(),
           child: const Icon(Icons.restart_alt),
-        ),
-        FloatingActionButton(
-          backgroundColor: const Color.fromARGB(255, 0, 7, 40),
-          foregroundColor: const Color.fromARGB(255, 255, 255, 255),
-          onPressed: () => reiniciarp(),
-          child: const Icon(Icons.restart_alt),
-        ),
-        FloatingActionButton(
-          backgroundColor: const Color.fromARGB(255, 0, 7, 40),
-          foregroundColor: const Color.fromARGB(255, 255, 255, 255),
-          onPressed: () => incrementars(),
-          child: const Icon(Icons.exposure_plus_1),
-        ),
-        FloatingActionButton(
-          backgroundColor: const Color.fromARGB(255, 0, 7, 40),
-          foregroundColor: const Color.fromARGB(255, 255, 255, 255),
-          onPressed: () => incrementarp(),
-          child: const Icon(Icons.exposure_plus_1),
         ),
       ],
     );
